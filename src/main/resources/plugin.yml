@@ -1,0 +1,9 @@
+name: PickupControl
+author: SunnyReborn
+main: me.sunnyreborn.pickupcontrol.PickupControl
+version: '${project.version}'
+api-version: 1.18
+
+commands:
+  pickupcontrol:
+    aliases: [pickup, pickupcontrol, pc, pickupc, pcontrol]
