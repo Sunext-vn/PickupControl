@@ -39,7 +39,6 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>C:\Users\DuyKhang\Desktop\Code Project\Minecraft Coding\Plugin-Output_Folder</outputFile>
                         </configuration>
                     </execution>
                 </executions>
