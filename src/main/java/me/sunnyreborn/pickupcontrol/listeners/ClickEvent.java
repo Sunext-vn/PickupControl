@@ -1,9 +1,9 @@
 package me.sunnyreborn.pickupcontrol.listeners;
 
 import me.sunnyreborn.pickupcontrol.PickupControl;
+import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
 import me.sunnyreborn.pickupcontrol.utils.Others;
-import me.sunnyreborn.pickupcontrol.utils.ShortString;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,9 +16,16 @@ import me.sunnyreborn.pickupcontrol.enums.Mode;
 import me.sunnyreborn.pickupcontrol.file.TempData;
 import me.sunnyreborn.pickupcontrol.gui.GUI;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ClickEvent implements Listener {
 
 	PickupControl pl = PickupControl.getInstance();
+
+	/* Because of main Map store slot of GUI auto sort, it made the code gone wrong,
+	   so I need to create this to make this code run right! */
+	List<GuiItem> listGuiItem = Arrays.stream(GuiItem.values()).toList();
 
 	@EventHandler
 	public void onClick(InventoryClickEvent e) {
@@ -31,26 +38,13 @@ public class ClickEvent implements Listener {
 		Player p = (Player) e.getWhoClicked();
 		TempData data = pl.getData().getDataPlayer(p);
 		
-		if (e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
-			p.sendMessage(ShortString.PUT_ON_WRONG_SLOT);
+		if (e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY || e.getAction() == InventoryAction.COLLECT_TO_CURSOR) {
 			e.setCancelled(true);
 		}
 		
-		if (slot >= 0 && slot <= 53) e.setCancelled(true);
+		if (slot >= 0 && slot <= 53) {
+			e.setCancelled(true);
 
-		if (slot == 49) {
-			toggleMode(p);
-			GUI gui = new GUI(p, pl);
-			gui.openInv(p);
-		}
-		
-		if (slot >= 45 && slot <= 53 && slot != 49) {
-			toggleToggle(p);
-			GUI gui = new GUI(p, pl);
-			gui.openInv(p);
-		}
-		
-		if (slot >= 0 && slot <= 44) {
 			if (press != null && press.getType() != Material.AIR) {
 				pl.getData().addItems(p, press);
 				p.getInventory().addItem(press);
@@ -58,6 +52,21 @@ public class ClickEvent implements Listener {
 				GUI gui = new GUI(p, pl);
 				gui.openInv(p);
 				return;
+			}
+
+			GuiItem clickRecognizes = clickSlot(slot);
+
+			if (clickRecognizes == GuiItem.BLACKLIST || clickRecognizes == GuiItem.WHITELIST) {
+				toggleMode(p);
+				GUI gui = new GUI(p, pl);
+				gui.openInv(p);
+				return;
+			}
+
+			if (clickRecognizes == GuiItem.ENABLE || clickRecognizes == GuiItem.DISABLE) {
+				toggleToggle(p);
+				GUI gui = new GUI(p, pl);
+				gui.openInv(p);
 			}
 		}
 		
@@ -70,7 +79,7 @@ public class ClickEvent implements Listener {
 		}
 	}
 
-	public void toggleMode(Player p) {
+	private void toggleMode(Player p) {
 		TempData temp = pl.getData().getDataPlayer(p);
 
 		if (temp.getMode() == Mode.WHITELIST) {
@@ -80,7 +89,7 @@ public class ClickEvent implements Listener {
 		}
 	}
 	
-	public void toggleToggle(Player p) {
+	private void toggleToggle(Player p) {
 		TempData temp = pl.getData().getDataPlayer(p);
 
 		if (temp.getToggle() == Toggle.ENABLE) {
@@ -88,6 +97,25 @@ public class ClickEvent implements Listener {
 		} else {
 			pl.getData().setToggle(p, Toggle.ENABLE);
 		}
+	}
+
+	private GuiItem clickSlot(int slot) {
+		for (GuiItem guiItem : listGuiItem) {
+			String[] s = pl.getData().gui_slot.get(guiItem);
+
+				if (s.length == 1) {
+					if (slot == Integer.parseInt(s[0])) {
+						return guiItem;
+					}
+					continue;
+				}
+				for (int i = Integer.parseInt(s[0]); i <= Integer.parseInt(s[1]); ++i) {
+					if (slot == i) {
+						return guiItem;
+					}
+				}
+		}
+		return null;
 	}
 
 }

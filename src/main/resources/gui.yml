@@ -15,13 +15,12 @@ items:
     name: "&7&lBLACKLIST"
     material: "TRAPPED_CHEST"
     amount: 1
-    model-id: 0
     slot: "49"
-    glow: false
+    glow: true
     lore:
       - ""
       - "&7When there are items on the ground,"
-      - "&7you will &c&nNOT &7be able to pick up"
+      - "&7you will &c&nNOT&7 be able to pick up"
       - "&7the items above!"
       - ""
       - "&c&lPRESS TO CHANGE TO &f&lWHITELIST."
@@ -29,13 +28,12 @@ items:
     name: "&f&lWHITELIST"
     material: "HOPPER"
     amount: 1
-    model-id: 0
     slot: "49"
     glow: false
     lore:
       - ""
       - "&7When there are items on the ground,"
-      - "&7you will &c&nONLY &7be able to pick up"
+      - "&7you will &c&nONLY&7 be able to pick up"
       - "&7the items above!"
       - ""
       - "&c&lPRESS TO CHANGE TO &7&lBLACKLIST."
@@ -43,7 +41,6 @@ items:
     name: "&7&oPUT ITEM ABOVE!"
     material: "GRAY_STAINED_GLASS_PANE"
     amount: 1
-    model-id: 0
     slot: "45:53"
     glow: false
     lore:
@@ -53,7 +50,6 @@ items:
     name: "&7&oPUT ITEM ABOVE!"
     material: "GRAY_STAINED_GLASS_PANE"
     amount: 1
-    model-id: 0
     slot: "45:53"
     glow: false
     lore:

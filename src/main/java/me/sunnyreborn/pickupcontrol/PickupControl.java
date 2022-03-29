@@ -4,8 +4,10 @@ import java.io.File;
 import java.util.Objects;
 
 import me.sunnyreborn.pickupcontrol.commands.MainCommand;
+import me.sunnyreborn.pickupcontrol.listeners.LegacyPickupEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
@@ -22,7 +24,10 @@ public class PickupControl extends JavaPlugin {
 	private DataManager data;
 
 	public void onEnable() {
-		new File(getDataFolder() + "/data/");
+		File dataFolder = new File(getDataFolder() + "/data/");
+		if (!dataFolder.exists()) dataFolder.mkdirs();
+
+		saveDefaultConfig();
 
 		pl = this;
 
@@ -41,8 +46,13 @@ public class PickupControl extends JavaPlugin {
 		Bukkit.getOnlinePlayers().forEach(HumanEntity::closeInventory);
 	}
 
-	public void loadEvents() {
-		getServer().getPluginManager().registerEvents(new PickupEvent(), this);
+	private void loadEvents() {
+		try {
+			Class.forName("org.bukkit.event.entity.EntityPickupItemEvent");
+			getServer().getPluginManager().registerEvents(new PickupEvent(), this);
+		} catch (ClassNotFoundException e) {
+			getServer().getPluginManager().registerEvents(new LegacyPickupEvent(), this);
+		}
 		getServer().getPluginManager().registerEvents(new JoinEvent(), this);
 		getServer().getPluginManager().registerEvents(new ClickEvent(), this);
 	}

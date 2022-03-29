@@ -1,7 +1,7 @@
 package me.sunnyreborn.pickupcontrol.gui;
 
 import me.sunnyreborn.pickupcontrol.PickupControl;
-import me.sunnyreborn.pickupcontrol.enums.GUIITEM;
+import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
 import me.sunnyreborn.pickupcontrol.utils.Others;
 import me.sunnyreborn.pickupcontrol.utils.ShortString;
@@ -26,17 +26,17 @@ public class GUI implements InventoryHolder {
 			inv.addItem(is);
 		}
 
-		ItemStack enable = Others.getGuiItem(GUIITEM.ENABLE);
-		String[] enable_slot = Others.gui_slot.get(GUIITEM.ENABLE);
-		
-		ItemStack disable = Others.getGuiItem(GUIITEM.DISABLE);
-		String[] disable_slot = Others.gui_slot.get(GUIITEM.DISABLE);
+		ItemStack enable = Others.getGuiItem(GuiItem.ENABLE);
+		String[] enable_slot = pl.getData().gui_slot.get(GuiItem.ENABLE);
 
-		ItemStack whitelist = Others.getGuiItem(GUIITEM.WHITELIST);
-		String[] whitelist_slot = Others.gui_slot.get(GUIITEM.WHITELIST);
+		ItemStack disable = Others.getGuiItem(GuiItem.DISABLE);
+		String[] disable_slot = pl.getData().gui_slot.get(GuiItem.DISABLE);
 
-		ItemStack blacklist = Others.getGuiItem(GUIITEM.BLACKLIST);
-		String[] blacklist_slot = Others.gui_slot.get(GUIITEM.BLACKLIST);
+		ItemStack whitelist = Others.getGuiItem(GuiItem.WHITELIST);
+		String[] whitelist_slot = pl.getData().gui_slot.get(GuiItem.WHITELIST);
+
+		ItemStack blacklist = Others.getGuiItem(GuiItem.BLACKLIST);
+		String[] blacklist_slot = pl.getData().gui_slot.get(GuiItem.BLACKLIST);
 
 		if (temp.getToggle() == Toggle.ENABLE) {
 			shortSetItem(enable, enable_slot);
@@ -54,8 +54,9 @@ public class GUI implements InventoryHolder {
 	private void shortSetItem(ItemStack is, String[] s) {
 		if (s.length == 1) {
 			inv.setItem(Integer.parseInt(s[0]), is);
+			return;
 		}
-		for (int i = Integer.parseInt(s[0]); i <= Integer.parseInt(s[1]); i++) {
+		for (int i = Integer.parseInt(s[0]); i <= Integer.parseInt(s[1]); ++i) {
 			inv.setItem(i, is);
 		}
 	}

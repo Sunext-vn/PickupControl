@@ -21,6 +21,12 @@ public class ItemBuilder {
         meta = is.getItemMeta();
     }
 
+    public ItemBuilder(ItemStack is) {
+        this.is = is;
+
+        meta = is.getItemMeta();
+    }
+
     public ItemBuilder setName(String name) {
         meta.setDisplayName(Others.color(name));
 

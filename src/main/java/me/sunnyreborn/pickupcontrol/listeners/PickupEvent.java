@@ -2,12 +2,12 @@ package me.sunnyreborn.pickupcontrol.listeners;
 
 import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
+import me.sunnyreborn.pickupcontrol.utils.Others;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
 
 import me.sunnyreborn.pickupcontrol.enums.Mode;
 import me.sunnyreborn.pickupcontrol.file.TempData;
@@ -18,25 +18,24 @@ public class PickupEvent implements Listener {
 
 	@EventHandler
 	public void onPickup(EntityPickupItemEvent e) {
-		if (!(e.getEntity() instanceof Player))
+		if (!(e.getEntity() instanceof Player p))
 			return;
 
-		Player p = (Player) e.getEntity();
 		ItemStack is = e.getItem().getItemStack().clone();
 		is.setAmount(1);
 		TempData temp = pl.getData().getDataPlayer(p);
-		
+
 		if (temp.getToggle() == Toggle.DISABLE) return;
 
 		if (temp.getItems().isEmpty())
 			return;
-		
-		for (ItemStack file : temp.getItems().values()) {
+
+		/* for (ItemStack file : temp.getItems().values()) {
 			if (is.getType().equals(file.getType())) {
 				replaceDurability(is, file);
 			}
-		}
-		
+		} */
+
 		if (temp.getItems().containsValue(is)) {
 			if (temp.getMode() == Mode.BLACKLIST) {
 				e.setCancelled(true);
@@ -47,8 +46,9 @@ public class PickupEvent implements Listener {
 			}
 		}
 	}
-	
-	private void replaceDurability(ItemStack floor, ItemStack file) {
+
+	// Check for Damage, still on developed
+	/* private void replaceDurability(ItemStack floor, ItemStack file) {
 		if (file.getItemMeta() instanceof Damageable) {
 			Damageable tempFloor = (Damageable) floor.getItemMeta();
 			Damageable tempFile = (Damageable) file.getItemMeta();
@@ -59,6 +59,6 @@ public class PickupEvent implements Listener {
 			
 			floor.setItemMeta(tempFloor);
 		}
-	}
+	} */
 
 }

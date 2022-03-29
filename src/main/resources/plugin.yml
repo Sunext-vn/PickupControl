@@ -2,7 +2,7 @@ name: PickupControl
 author: SunnyReborn
 main: me.sunnyreborn.pickupcontrol.PickupControl
 version: '${project.version}'
-api-version: 1.18
+api-version: 1.13
 
 commands:
   pickupcontrol:

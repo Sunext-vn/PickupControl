@@ -1,5 +1,5 @@
 package me.sunnyreborn.pickupcontrol.enums;
 
-public enum GUIITEM {
+public enum GuiItem {
     BLACKLIST, WHITELIST, ENABLE, DISABLE
 }
