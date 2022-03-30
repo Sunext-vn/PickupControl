@@ -5,7 +5,6 @@ import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Mode;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
-import me.sunnyreborn.pickupcontrol.utils.Others;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

@@ -35,11 +35,10 @@ public class LegacyPickupEvent implements Listener {
             if (temp.getMode() == Mode.BLACKLIST) {
                 e.setCancelled(true);
             }
-        } else {
-            if (temp.getMode() == Mode.WHITELIST) {
-                e.setCancelled(true);
-            }
+            return;
         }
+        if (temp.getMode() == Mode.WHITELIST)
+            e.setCancelled(true);
     }
 
 }

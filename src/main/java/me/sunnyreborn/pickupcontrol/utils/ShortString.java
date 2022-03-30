@@ -17,7 +17,7 @@ public class ShortString {
     public static int SIZE = data.getGuiYaml().getInt("size");
 
     // Config
-    public static String PUT_ON_WRONG_SLOT = Others.color(Others.color(pl.getConfig().getString("message.put-item-wrong-slot")));
-    public static String WELCOME_MESSAGE = Others.color(Others.color(pl.getConfig().getString("message.welcome-message")));
+    public static String PUT_ON_WRONG_SLOT = Others.color(pl.getConfig().getString("message.put-item-wrong-slot"));
+    public static String WELCOME_MESSAGE = Others.color(pl.getConfig().getString("message.welcome-message"));
 
 }
