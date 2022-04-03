@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemBuilder {
@@ -40,6 +41,19 @@ public class ItemBuilder {
         }
 
         meta.setLore(loreWithColor);
+
+        return this;
+    }
+
+    public ItemBuilder addLore(List<String> lore) {
+        List<String> beforeLore = meta.getLore();
+        if (meta.hasLore()) {
+            assert beforeLore != null;
+            beforeLore.addAll(lore);
+            meta.setLore(beforeLore);
+        } else {
+            meta.setLore(lore);
+        }
 
         return this;
     }

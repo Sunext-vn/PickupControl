@@ -1,6 +1,10 @@
 title: "PickupControl - &c&l&oMODE: {MODE}"
 size: 54
 
+lore-for-items-to-remove:
+  - ""
+  - "&c&lPRESS ON THIS ITEM TO REMOVE"
+
 # There's 4 default item: blacklist, whitelist, enable, disable.
 # you can't create more because they connect to the code.
 #
@@ -38,7 +42,7 @@ items:
       - ""
       - "&c&lPRESS TO CHANGE TO &7&lBLACKLIST."
   enable:
-    name: "&7&oPUT ITEM ABOVE!"
+    name: "&7&oPRESS THE ITEM ON INVENTORY TO ADD!"
     material: "GRAY_STAINED_GLASS_PANE"
     amount: 1
     slot: "45:53"
@@ -47,7 +51,7 @@ items:
       - ""
       - "&7Press this to &c&lTURN OFF"
   disable:
-    name: "&7&oPUT ITEM ABOVE!"
+    name: "&7&oPRESS THE ITEM ON INVENTORY TO ADD!"
     material: "GRAY_STAINED_GLASS_PANE"
     amount: 1
     slot: "45:53"

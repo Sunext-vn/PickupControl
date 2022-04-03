@@ -5,6 +5,7 @@ import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Mode;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -66,6 +67,9 @@ public class DataManager {
     @SneakyThrows
     public void addItems(Player p, ItemStack is) {
         ItemStack finalItem = is.clone();
+
+        if (is.getType().equals(Material.AIR)) return;
+
         finalItem.setAmount(1);
         if (existsItems(p, finalItem))
             return;

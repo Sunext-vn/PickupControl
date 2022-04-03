@@ -3,6 +3,7 @@ package me.sunnyreborn.pickupcontrol.gui;
 import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
+import me.sunnyreborn.pickupcontrol.utils.ItemBuilder;
 import me.sunnyreborn.pickupcontrol.utils.Others;
 import me.sunnyreborn.pickupcontrol.utils.ShortString;
 import org.bukkit.Bukkit;
@@ -23,7 +24,7 @@ public class GUI implements InventoryHolder {
 		inv = Bukkit.createInventory(this, ShortString.SIZE, ShortString.TITLE.replace("{MODE}", Others.modeToColor(temp.getMode())));
 
 		for (ItemStack is : temp.getItems().values()) {
-			inv.addItem(is);
+			inv.addItem(new ItemBuilder(is).addLore(ShortString.ITEM_LORE).buildItem());
 		}
 
 		ItemStack enable = Others.getGuiItem(GuiItem.ENABLE);

@@ -4,17 +4,14 @@ import java.io.File;
 import java.util.Objects;
 
 import me.sunnyreborn.pickupcontrol.commands.MainCommand;
-import me.sunnyreborn.pickupcontrol.listeners.LegacyPickupEvent;
+import me.sunnyreborn.pickupcontrol.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
-import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
 import me.sunnyreborn.pickupcontrol.file.DataManager;
-import me.sunnyreborn.pickupcontrol.listeners.ClickEvent;
-import me.sunnyreborn.pickupcontrol.listeners.JoinEvent;
-import me.sunnyreborn.pickupcontrol.listeners.PickupEvent;
 
 @Getter
 public class PickupControl extends JavaPlugin {
@@ -23,6 +20,7 @@ public class PickupControl extends JavaPlugin {
 
 	private DataManager data;
 
+	@Override
 	public void onEnable() {
 		File dataFolder = new File(getDataFolder() + "/data/");
 		if (!dataFolder.exists()) dataFolder.mkdirs();
@@ -40,6 +38,7 @@ public class PickupControl extends JavaPlugin {
 		Objects.requireNonNull(getServer().getPluginCommand("pickupcontrol")).setExecutor(new MainCommand());
 	}
 
+	@Override
 	public void onDisable() {
 		data.getMap().clear();
 
@@ -49,12 +48,16 @@ public class PickupControl extends JavaPlugin {
 	private void loadEvents() {
 		try {
 			Class.forName("org.bukkit.event.entity.EntityPickupItemEvent");
-			getServer().getPluginManager().registerEvents(new PickupEvent(), this);
+			regEvent(new PickupEvent());
 		} catch (ClassNotFoundException e) {
-			getServer().getPluginManager().registerEvents(new LegacyPickupEvent(), this);
+			regEvent(new LegacyPickupEvent());
 		}
-		getServer().getPluginManager().registerEvents(new JoinEvent(), this);
-		getServer().getPluginManager().registerEvents(new ClickEvent(), this);
+		regEvent(new JoinEvent());
+		regEvent(new ClickEvent());
+	}
+
+	private void regEvent(Listener l) {
+		getServer().getPluginManager().registerEvents(l, this);
 	}
 
 	public static PickupControl getInstance() {

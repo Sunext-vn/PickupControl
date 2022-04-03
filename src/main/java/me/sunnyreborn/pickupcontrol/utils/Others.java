@@ -5,7 +5,6 @@ import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Mode;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -46,6 +45,24 @@ public class Others {
             matcher = pattern.matcher(text);
         }
         return ChatColor.translateAlternateColorCodes('&', text);
+    }
+
+    public static List<String> color(List<String> text) {
+        List<String> result = new ArrayList<>();
+
+        for (String s : text) {
+            Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+            Matcher matcher = pattern.matcher(s);
+
+            while (matcher.find()) {
+                String color = s.substring(matcher.start(), matcher.end());
+                s = s.replace(color, ChatColor.of(color) + "");
+                matcher = pattern.matcher(s);
+            }
+            result.add(ChatColor.translateAlternateColorCodes('&', s));
+        }
+
+        return result;
     }
 
     public static String modeToColor(Mode mode) {

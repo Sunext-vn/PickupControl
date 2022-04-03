@@ -14,11 +14,12 @@ public class MainCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args) {
-		if (!(cs instanceof Player))
+		if (!(cs instanceof Player p))
 			return true;
 
+		if (!p.hasPermission("pickupcontrol.use")) return true;
+
 		if (args.length == 0) {
-			Player p = (Player) cs;
 			GUI gui = new GUI(p, pl);
 			gui.openInv(p);
 		}
