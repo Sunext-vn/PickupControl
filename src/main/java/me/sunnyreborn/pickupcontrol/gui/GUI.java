@@ -24,7 +24,7 @@ public class GUI implements InventoryHolder {
 		inv = Bukkit.createInventory(this, ShortString.SIZE, ShortString.TITLE.replace("{MODE}", Others.modeToColor(temp.getMode())));
 
 		for (ItemStack is : temp.getItems().values()) {
-			inv.addItem(new ItemBuilder(is).addLore(ShortString.ITEM_LORE).buildItem());
+			inv.addItem(new ItemBuilder(is.clone()).addLore(ShortString.ITEM_LORE).buildItem());
 		}
 
 		ItemStack enable = Others.getGuiItem(GuiItem.ENABLE);

@@ -2,7 +2,6 @@ package me.sunnyreborn.pickupcontrol.listeners;
 
 import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
-import me.sunnyreborn.pickupcontrol.utils.Others;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
