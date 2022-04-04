@@ -14,5 +14,5 @@ Recommend using Paper.
 
 ![1](https://user-images.githubusercontent.com/48017917/161475274-ada3cc1a-128a-4f06-8f77-6d3898017aee.gif)
 ![2](https://user-images.githubusercontent.com/48017917/161475315-4fe01000-d664-4da9-82f5-60fd660e3617.gif)
-![](https://github.com/HiImSunny/PickupControl/blob/master/gif/3.gif)
-![](https://github.com/HiImSunny/PickupControl/blob/master/gif/4.gif)
+![3](https://user-images.githubusercontent.com/48017917/161480440-85e20b85-3735-497b-9145-ff75506e9d15.gif)
+![4](https://user-images.githubusercontent.com/48017917/161480445-214b00a3-81a1-42e1-be5c-fcea65551b26.gif)
