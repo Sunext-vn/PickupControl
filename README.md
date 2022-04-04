@@ -14,5 +14,5 @@ Recommend using Paper.
 
 ![1](https://user-images.githubusercontent.com/48017917/161475274-ada3cc1a-128a-4f06-8f77-6d3898017aee.gif)
 ![2](https://user-images.githubusercontent.com/48017917/161475315-4fe01000-d664-4da9-82f5-60fd660e3617.gif)
-
-IF YOU HAVE ANY QUESTIONS OR SUGGESTIONS, PLEASE USE DISCORD (LINK ABOVE) OR THE DISCUSSION SECTION. PLEASE DO NOT ASK QUESTIONS OR REPORT ISSUES WITH YOUR RATING. THANK YOU!
+![3](https://imgur.com/a/ZgByhE7)
+![4](https://imgur.com/KvLHmT0)
