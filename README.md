@@ -14,5 +14,5 @@ Recommend using Paper.
 
 ![1](https://user-images.githubusercontent.com/48017917/161475274-ada3cc1a-128a-4f06-8f77-6d3898017aee.gif)
 ![2](https://user-images.githubusercontent.com/48017917/161475315-4fe01000-d664-4da9-82f5-60fd660e3617.gif)
-![3](https://giphy.com/gifs/i0GwDx2f0oxy4SR5Bb)
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/i0GwDx2f0oxy4SR5Bb" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/i0GwDx2f0oxy4SR5Bb">via GIPHY</a></p>
 ![4](https://i.imgur.com/KvLHmT0.mp4)
