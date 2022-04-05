@@ -23,6 +23,9 @@ public class JoinEvent implements Listener {
 		TempData temp = pl.getData().getMap().get(p);
 		if (temp.getToggle() == Toggle.ENABLE)
 			p.sendMessage(ShortString.WELCOME_MESSAGE.replace("{MODE}",  Others.modeToColor(temp.getMode())));
+
+		if (Others.adminChecking(p))
+			pl.updateMessage.forEach(p::sendMessage);
 	}
 
 }

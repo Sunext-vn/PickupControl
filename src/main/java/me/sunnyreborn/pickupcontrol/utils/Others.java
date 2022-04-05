@@ -7,6 +7,7 @@ import me.sunnyreborn.pickupcontrol.enums.Mode;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
@@ -71,6 +72,10 @@ public class Others {
         } else {
             return ShortString.WHITELIST_NAME;
         }
+    }
+
+    public static boolean adminChecking(Player p) {
+        return p.isOp() || p.hasPermission("pickupcontrol.admin");
     }
 }
 
