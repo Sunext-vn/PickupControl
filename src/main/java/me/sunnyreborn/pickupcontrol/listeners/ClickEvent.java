@@ -4,6 +4,8 @@ import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.ClickNode;
 import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Toggle;
+import me.sunnyreborn.pickupcontrol.utils.Others;
+import me.sunnyreborn.pickupcontrol.utils.ShortString;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,6 +37,8 @@ public class ClickEvent implements Listener {
 
         Player p = (Player) e.getWhoClicked();
         TempData data = pl.getData().getDataPlayer(p);
+
+        Others.playSound(p, ShortString.CLICK_SOUND);
 
         e.setCancelled(true);
 

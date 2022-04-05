@@ -74,9 +74,9 @@ public class PickupControl extends JavaPlugin {
 			if (this.getDescription().getVersion().equals(version)) {
 				updateMessage.add(Others.color("&7[&cPickupControl&7] &aThere is not a new update available."));
 			} else {
-				updateMessage.add(Others.color("&7[&cPickupControl&7] §7The plugin version you are using is §4out of date§7!"));
-				updateMessage.add(Others.color("&7[&cPickupControl&7] §7There is a new update available."));
-				updateMessage.add(Others.color("&7[&cPickupControl&7] §7Download it here: §6https://bom.so/63uV5V"));
+				updateMessage.add(Others.color("&7[&cPickupControl&7] &7The plugin version you are using is &4out of date&7!"));
+				updateMessage.add(Others.color("&7[&cPickupControl&7] &7There is a new update available."));
+				updateMessage.add(Others.color("&7[&cPickupControl&7] &7Download it here: &6https://bom.so/63uV5V"));
 			}
 
 			updateMessage.forEach(s -> Bukkit.getConsoleSender().sendMessage(s));

@@ -1,11 +1,13 @@
 package me.sunnyreborn.pickupcontrol.utils;
 
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import me.sunnyreborn.pickupcontrol.PickupControl;
 import me.sunnyreborn.pickupcontrol.enums.GuiItem;
 import me.sunnyreborn.pickupcontrol.enums.Mode;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -76,6 +78,17 @@ public class Others {
 
     public static boolean adminChecking(Player p) {
         return p.isOp() || p.hasPermission("pickupcontrol.admin");
+    }
+
+    public static void playSound(Player p, String sound) {
+        Optional<XSound> xSound = XSound.matchXSound(sound);
+
+        if (xSound.isEmpty()) return;
+
+        Sound resultSound = xSound.get().parseSound();
+
+        assert resultSound != null;
+        p.playSound(p.getLocation(), resultSound, 1, 1);
     }
 }
 

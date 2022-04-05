@@ -1,6 +1,11 @@
 title: "PickupControl - &c&l&oMODE: {MODE}"
 size: 54
 
+# Leave these empty if you don't want sound.
+open-sound: "BLOCK_CHEST_OPEN"
+close-sound: "BLOCK_CHEST_CLOSE"
+click-sound: "BLOCK_WOODEN_BUTTON_CLICK_OFF"
+
 lore-for-items-to-remove:
   - ""
   - "&c&lPRESS ON THIS ITEM TO REMOVE"
